@@ -1,0 +1,301 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+	Version="10.0"
+	VendorName="SlickEdit"
+	TemplateName="GNU C/C++"
+	WorkingDir="."
+	BuildSystem="automakefile"
+	BuildMakeFile="Makefile">
+	<Config
+		Name="Debug"
+		Type="gnuc"
+		DebugCallbackName="gdb"
+		Version="1"
+		OutputFile="%bdtouch.so"
+		CompilerConfigName="Latest Version">
+		<Menu>
+			<Target
+				Name="Compile"
+				MenuCaption="&amp;Compile"
+				Dialog="_gnuc_options_form Compile"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				OutputExts="*.o"
+				SaveOption="SaveCurrent"
+				RunFromDir="%rw">
+				<Exec CmdLine='gcc -c %xup  %defd -g -o "%bd%n%oe" %i "%f"'/>
+			</Target>
+			<Target
+				Name="Link"
+				MenuCaption="&amp;Link"
+				ShowOnMenu="Never"
+				Dialog="_gnuc_options_form Link"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveCurrent"
+				RunFromDir="%rw">
+				<Exec CmdLine='gcc %xup -g -o "%o" %f %libs -shared -fPIC'/>
+			</Target>
+			<Target
+				Name="Build"
+				MenuCaption="&amp;Build"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='make -f "Makefile" CFG=%b'/>
+			</Target>
+			<Target
+				Name="Rebuild"
+				MenuCaption="&amp;Rebuild"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='make -f "Makefile" rebuild CFG=%b'/>
+			</Target>
+			<Target
+				Name="Debug"
+				MenuCaption="&amp;Debug"
+				Dialog="_gnuc_options_form Run/Debug"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveNone"
+				RunFromDir="%rw">
+				<Exec CmdLine=""/>
+			</Target>
+			<Target
+				Name="Execute"
+				MenuCaption="E&amp;xecute"
+				Dialog="_gnuc_options_form Run/Debug"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine=""/>
+			</Target>
+			<Target
+				Name="dash"
+				MenuCaption="-"
+				Deletable="0">
+				<Exec/>
+			</Target>
+			<Target
+				Name="GNU C Options"
+				MenuCaption="GNU C &amp;Options..."
+				ShowOnMenu="HideIfNoCmdLine"
+				Deletable="0"
+				SaveOption="SaveNone">
+				<Exec
+					CmdLine="gnucoptions"
+					Type="Slick-C"/>
+			</Target>
+		</Menu>
+		<Rules Name="Compile">
+			<Rule
+				InputExts="*.ada"
+				OutputExts="*.o"
+				LinkObject="1">
+				<Exec CmdLine='gnat -g -c -o "%bd%n.o" "%f"'/>
+			</Rule>
+			<Rule
+				InputExts="*.adb"
+				OutputExts="*.o"
+				LinkObject="1">
+				<Exec CmdLine='gnat -g -c -o "%bd%n.o" "%f"'/>
+			</Rule>
+			<Rule
+				InputExts="*.f"
+				OutputExts="*.o"
+				LinkObject="1">
+				<Exec CmdLine='gfortran -c -g -o "%bd%n.o" "%f"'/>
+			</Rule>
+			<Rule
+				InputExts="*.f90"
+				OutputExts="*.o"
+				LinkObject="1">
+				<Exec CmdLine='gfortran -c -g -o "%bd%n.o" "%f"'/>
+			</Rule>
+			<Rule
+				InputExts="*.d"
+				OutputExts="*.o"
+				LinkObject="1">
+				<Exec CmdLine='gdc -c -g -o "%bd%n.o" "%f"'/>
+			</Rule>
+		</Rules>
+		<List Name="GNUC Options">
+			<Item
+				Name="LinkerOutputType"
+				Value="SharedLibrary"/>
+		</List>
+		<Includes>
+			<Include Dir="/usr/src/linux-headers-4.15.0-65/include/"/>
+			<Include Dir="/usr/src/linux-headers-4.15.0-65-generic/include/"/>
+			<Include Dir="/usr/src/linux-headers-4.15.0-65/arch/arc/include/"/>
+			<Include Dir="/usr/src/linux-headers-4.15.0-65/arch/x86/include/"/>
+		</Includes>
+	</Config>
+	<Config
+		Name="Release"
+		Type="gnuc"
+		DebugCallbackName="gdb"
+		Version="1"
+		OutputFile="%bdtouch.so"
+		CompilerConfigName="Latest Version">
+		<Menu>
+			<Target
+				Name="Compile"
+				MenuCaption="&amp;Compile"
+				Dialog="_gnuc_options_form Compile"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				OutputExts="*.o"
+				SaveOption="SaveCurrent"
+				RunFromDir="%rw">
+				<Exec CmdLine='gcc -c %xup %defd -o "%bd%n%oe" %i "%f"'/>
+			</Target>
+			<Target
+				Name="Link"
+				MenuCaption="&amp;Link"
+				ShowOnMenu="Never"
+				Dialog="_gnuc_options_form Link"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveCurrent"
+				RunFromDir="%rw">
+				<Exec CmdLine='gcc %xup -o "%o" %f %libs -shared -fPIC'/>
+			</Target>
+			<Target
+				Name="Build"
+				MenuCaption="&amp;Build"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='make -f "Makefile" CFG=%b'/>
+			</Target>
+			<Target
+				Name="Rebuild"
+				MenuCaption="&amp;Rebuild"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='make -f "Makefile" rebuild CFG=%b'/>
+			</Target>
+			<Target
+				Name="Debug"
+				MenuCaption="&amp;Debug"
+				Dialog="_gnuc_options_form Run/Debug"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveNone"
+				RunFromDir="%rw">
+				<Exec CmdLine=""/>
+			</Target>
+			<Target
+				Name="Execute"
+				MenuCaption="E&amp;xecute"
+				Dialog="_gnuc_options_form Run/Debug"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine=""/>
+			</Target>
+			<Target
+				Name="dash"
+				MenuCaption="-"
+				Deletable="0">
+				<Exec/>
+			</Target>
+			<Target
+				Name="GNU C Options"
+				MenuCaption="GNU C &amp;Options..."
+				ShowOnMenu="HideIfNoCmdLine"
+				Deletable="0"
+				SaveOption="SaveNone">
+				<Exec
+					CmdLine="gnucoptions"
+					Type="Slick-C"/>
+			</Target>
+		</Menu>
+		<Rules Name="Compile">
+			<Rule
+				InputExts="*.ada"
+				OutputExts="*.o"
+				LinkObject="1">
+				<Exec CmdLine='gnat -O -c -o "%bd%n.o" "%f"'/>
+			</Rule>
+			<Rule
+				InputExts="*.adb"
+				OutputExts="*.o"
+				LinkObject="1">
+				<Exec CmdLine='gnat -O -c -o "%bd%n.o" "%f"'/>
+			</Rule>
+			<Rule
+				InputExts="*.f"
+				OutputExts="*.o"
+				LinkObject="1">
+				<Exec CmdLine='gfortran -O -g -o "%bd%n.o" "%f"'/>
+			</Rule>
+			<Rule
+				InputExts="*.f90"
+				OutputExts="*.o"
+				LinkObject="1">
+				<Exec CmdLine='gfortran -O -g -o "%bd%n.o" "%f"'/>
+			</Rule>
+			<Rule
+				InputExts="*.d"
+				OutputExts="*.o"
+				LinkObject="1">
+				<Exec CmdLine='gdc -c -g -o "%bd%n.o" "%f"'/>
+			</Rule>
+		</Rules>
+		<List Name="GNUC Options">
+			<Item
+				Name="LinkerOutputType"
+				Value="SharedLibrary"/>
+		</List>
+		<Includes>
+			<Include Dir="/usr/src/linux-headers-4.15.0-65/include/"/>
+			<Include Dir="/usr/src/linux-headers-4.15.0-65-generic/include/"/>
+			<Include Dir="/usr/src/linux-headers-4.15.0-65/arch/arc/include/"/>
+			<Include Dir="/usr/src/linux-headers-4.15.0-65/arch/x86/include/"/>
+		</Includes>
+	</Config>
+	<Files>
+		<Folder
+			Name="Source Files"
+			Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.c++;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.scala;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl;*.d;*.m;*.mm;*.go;*.groovy;*.gsh"
+			GUID="{3C7038B6-DB30-4A33-81BF-BF46C5D6CF20}">
+			<F N="touch.c"/>
+		</Folder>
+		<Folder
+			Name="Header Files"
+			Filters="*.h;*.H;*.hh;*.hpp;*.hxx;*.h++;*.inc;*.sh;*.cpy;*.if"
+			GUID="{68C27B0F-9C41-4D41-B374-F3E3F0067A7E}">
+			<F N="touch.h"/>
+		</Folder>
+		<Folder
+			Name="Resource Files"
+			Filters="*.ico;*.cur;*.dlg"
+			GUID="{A42F1646-BCBC-410D-9549-3B11DEF2148C}"/>
+		<Folder
+			Name="Bitmaps"
+			Filters="*.bmp"
+			GUID="{AFFF769C-6887-4C38-9015-0693B451EB3C}"/>
+		<Folder
+			Name="Other Files"
+			Filters=""
+			GUID="{4D30D862-B771-4F1B-B744-578893818463}">
+			<F
+				N="Makefile"
+				Type="Makefile"/>
+		</Folder>
+	</Files>
+</Project>
